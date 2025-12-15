@@ -16,32 +16,27 @@ public class SlidingWindowFixedSize {
      * 第二轮 for 右端处理是滑动的第二轮，左端是滑动的第三轮
      */
     public static int slidingWindowFixedSize(int[] nums, int k) {
-        int value = 0;
-        // 示例：这里用 max 作为结果
+        // 结果值（模板示例为寻找最大值）
         int result = Integer.MIN_VALUE;
-
+        // 中间过程值
+        int value = 0;
         for (int right = 0; right < nums.length; right++) {
             // 1. 处理右端
             value += nums[right];
 
             // 2. 窗口未形成
-            if (right < k - 1) {
+            int nextLeft = right - k + 1;
+            if (nextLeft < 0) {
                 continue;
             }
 
-            // 3️. 更新结果
-            result = updateResult(result, value);
+            // 3️. 更新结果（模板示例为寻找最大值）
+            result = Math.max(value, result);
 
-            // 4. 处理右端
-            int left = right - k + 1;
-            value -= nums[left];
+            // 4. 处理左端
+            value -= nums[nextLeft];
         }
 
         return result;
-    }
-
-    private static int updateResult(int result, int value) {
-        // 默认示例：取最大值
-        return Math.max(result, value);
     }
 }
