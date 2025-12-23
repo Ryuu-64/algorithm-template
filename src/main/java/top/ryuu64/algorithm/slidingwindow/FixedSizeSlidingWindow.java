@@ -1,21 +1,21 @@
 package top.ryuu64.algorithm.slidingwindow;
 
 /**
+ * <a href="https://www.geeksforgeeks.org/dsa/window-sliding-technique/">window-sliding-technique</a>
  * <a href="https://leetcode.cn/problems/maximum-average-subarray-i/description/">643. 子数组最大平均数 I</a>
+ * <p>
+ * 先移动右端，后移动左端
+ * <p>
+ * 特别地，第一轮移动时，无需移动左端，只移动右端
+ * 第一轮 for 右端处理是滑动的第一轮(只移动右端，左端无需移动)，左端是滑动的第二轮（左端开始移动）
+ * 第二轮 for 右端处理是滑动的第二轮，左端是滑动的第三轮
  */
-public class SlidingWindowFixedSize {
+public class FixedSizeSlidingWindow {
     /**
-     * 定长滑动窗口
      * @param nums 输入数组
      * @param k    窗口大小
-     * <p>
-     * 我们需要首先移动右端，然后才会移动左端
-     * <p>
-     * 特别地，第一次移动时，无需移动左端，只移动右端
-     * 第一轮 for 右端处理是滑动的第一轮(只移动右端，左端无需移动)，左端是滑动的第二轮（左端开始移动）
-     * 第二轮 for 右端处理是滑动的第二轮，左端是滑动的第三轮
      */
-    public static int slidingWindowFixedSize(int[] nums, int k) {
+    public static int fixedSizeSlidingWindow(int[] nums, int k) {
         // 结果值（模板示例为寻找最大值）
         int result = Integer.MIN_VALUE;
         // 中间过程值
